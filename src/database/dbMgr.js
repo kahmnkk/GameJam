@@ -37,9 +37,9 @@ class dbMgr extends BaseModel {
     constructor() {
         super();
 
-        this.mysql = {
-            master: /** @type {MySQL} */ (null),
-        };
+        // this.mysql = {
+        //     master: /** @type {MySQL} */ (null),
+        // };
 
         this.redis = {
             sessionStore: /** @type {Redis} */ (null),
@@ -48,7 +48,7 @@ class dbMgr extends BaseModel {
         };
     }
 
-    get mysqlConn()     { return mysqlConn; } // prettier-ignore
+    // get mysqlConn()     { return mysqlConn; } // prettier-ignore
     get redisConn()     { return redisConn; } // prettier-ignore
 
     /**
@@ -70,16 +70,16 @@ class dbMgr extends BaseModel {
     }
 
     async init() {
-        for (let dbName in this.mysql) {
-            if (config.mysql[dbName] == null) {
-                throw utils.errorHandling(errors.undefinedConfig);
-            }
+        // for (let dbName in this.mysql) {
+        //     if (config.mysql[dbName] == null) {
+        //         throw utils.errorHandling(errors.undefinedConfig);
+        //     }
 
-            let initMySql = new MySQL();
-            await initMySql.createPool(config.mysql[dbName]);
+        //     let initMySql = new MySQL();
+        //     await initMySql.createPool(config.mysql[dbName]);
 
-            this.mysql[dbName] = initMySql;
-        }
+        //     this.mysql[dbName] = initMySql;
+        // }
 
         for (let dbName in this.redis) {
             if (config.redis[dbName] == null) {

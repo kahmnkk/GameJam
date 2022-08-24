@@ -12,7 +12,6 @@ const errors = require('@src/errors');
 
 // Utils
 const utils = require('@src/utils/utils');
-const time = require('@src/utils/time');
 const logger = require('@src/utils/logger');
 
 // Database
@@ -87,9 +86,6 @@ class ApiService {
 
     async init() {
         await dbMgr.init();
-
-        await time.init(config.devTime);
-        await time.syncTime();
     }
 
     run() {

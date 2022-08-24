@@ -11,7 +11,6 @@ const SessionMgr = require('@src/api/sessionMgr');
 
 // Utils
 const utils = require('@src/utils/utils');
-const time = require('@src/utils/time');
 
 const timePrefix = 10000000000;
 
@@ -40,7 +39,7 @@ async function endGame(req, res) {
 
         await dbMgr.redis.user.client.set(userIdx, name);
 
-        const nowTimestamp = time.nowTimestamp();
+        const nowTimestamp = Math.floor(Date.now() / 1000);
         const rankingTimeStr = timePrefix - nowTimestamp + '';
         const saveScore = score + rankingTimeStr;
 
